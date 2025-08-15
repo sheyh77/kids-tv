@@ -2,7 +2,13 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div>Footer</div>
+    <section className="footer">
+      <div className="cantainer">
+        <div className="footer-wrap">
+          <h1>footer</h1>
+        </div>
+      </div>
+    </section>
   )
 }
 
