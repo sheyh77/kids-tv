@@ -1,0 +1,110 @@
+.newMult {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #FFD600;
+
+    &-title {
+        border-left: 5px solid #7e26a6;
+        border-top-left-radius: 2px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        padding-left: 12px;
+        font-size: 36px;
+        position: absolute;
+        top: 30px;
+        color: #7e26a6;
+
+        @media screen and (max-width: 420px){
+            font-size: 24px;
+        }
+    }
+
+    &-swiper-img {
+        width: 100%;
+        height: 600px;
+        border-radius: 12px;
+
+        @media screen and (max-width: 550px){
+            height: 500px;
+        }
+
+        @media screen and (max-width: 470px){
+            height: 400px;
+        }
+
+        @media screen and (max-width: 380px){
+            height: 300px;
+        }
+    }
+
+    &-decor {
+        position: absolute;
+        z-index: 111;
+    }
+
+    &-decor1 {
+        left: 50px;
+        width: 300px;
+
+        @media screen and (max-width: 1720px){
+            left: 0;
+            width: 200px;
+            top: 300px;
+        }
+
+        @media screen and (max-width: 1500px){
+            display: none;
+        }
+    }
+
+    &-decor2 {
+        top: 100px;
+        right: 21%;
+        width: 300px;
+
+        @media screen and (max-width: 600px){
+            right: 5%;
+            width: 200px;
+            top: 120px;
+        }
+    }
+
+    &-decor3 {
+        top: 70px;
+        right: 61%;
+        width: 200px;
+
+        @media screen and (max-width: 600px){
+            left: 5%;
+            width: 150px;
+            top: 100px;
+        }
+    }
+
+    &-decor4 {
+        right: 100px;
+
+        @media screen and (max-width: 1900px){
+            right: 0;
+        }
+
+        @media screen and (max-width: 1720px){
+            width: 250px;
+            top: 300px;
+        }
+
+        @media screen and (max-width: 1500px){
+            display: none;
+        }
+    }
+
+    &-decor5 {
+        width: 200px;
+        right: 100px;
+        bottom: 0;
+    }
+}
