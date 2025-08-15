@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     background-color: #FFD600;
 
     &-title {
@@ -14,8 +13,6 @@
         border-bottom-right-radius: 2px;
         padding-left: 12px;
         font-size: 36px;
-        position: absolute;
-        top: 30px;
         color: #7e26a6;
 
         @media screen and (max-width: 420px){
