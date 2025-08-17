@@ -1,8 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Header from "../layout/Header";
 
 function Brain() {
   return (
-    <div>Brain</div>
+    <section className="brain">
+      <div className="cantainer">
+        <div className="brain-wrap">
+          <Header />
+        </div>
+      </div>
+    </section>
   )
 }
 

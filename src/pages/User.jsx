@@ -1,8 +1,15 @@
 import React from 'react'
+import Header from '../layout/Header'
 
 function User() {
   return (
-    <div>User</div>
+    <section className="user">
+      <div className="cantainer">
+        <div className="user-wrap">
+          <Header />
+        </div>
+      </div>
+    </section>
   )
 }
 

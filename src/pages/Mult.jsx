@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from "../layout/Header";
 import { newMultMap } from "../components/newMultMap";
 
@@ -7,14 +7,29 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
-import { multMap } from '../data/multMap';
 
 function Mult() {
   const [selectedLang, setSelectedLang] = useState("all"); // all = barcha tillar
   const [searchTerm, setSearchTerm] = useState("");
+  const [mults, setMults] = useState([]); // API dan kelyotgan malumotlar
+  const [loading, setLoading] = useState(true);
 
-  // Filtrlash
-  const filteredMults = multMap.filter(item => {
+  // 🔹 API dan fetch qilish
+  useEffect(() => {
+    fetch("https://ceed8a646c7fba8b.mokky.dev/multcard") // <-- o'z linkingizni yozing
+      .then(res => res.json())
+      .then(data => {
+        setMults(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Xatolik:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  // 🔹 Filtrlash
+  const filteredMults = mults.filter(item => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesLang = selectedLang === "all" || item.lang === selectedLang;
     return matchesSearch && matchesLang;
@@ -26,7 +41,6 @@ function Mult() {
         <div className="mult-wrap">
           <Header />
           
-          {/* Qidiruv */}
           <input 
             type="search"
             placeholder='Qidiruv'
@@ -40,13 +54,8 @@ function Mult() {
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-              }}
+              autoplay={{ delay: 2500, disableOnInteraction: false }}
+              pagination={{ clickable: true }}
               modules={[Autoplay, Pagination]}
               className="mySwiper"
             >
@@ -65,32 +74,26 @@ function Mult() {
               <button 
                 className={selectedLang === "all" ? "active" : ""}
                 onClick={() => setSelectedLang("all")}
-              >
-                Barchasi
-              </button>
+              >Barchasi</button>
               <button 
                 className={selectedLang === "uz" ? "active" : ""}
                 onClick={() => setSelectedLang("uz")}
-              >
-                Uzbek
-              </button>
+              >Uzbek</button>
               <button 
                 className={selectedLang === "en" ? "active" : ""}
                 onClick={() => setSelectedLang("en")}
-              >
-                English
-              </button>
+              >English</button>
               <button 
                 className={selectedLang === "ru" ? "active" : ""}
                 onClick={() => setSelectedLang("ru")}
-              >
-                Russion
-              </button>
+              >Russian</button>
             </div>
 
             {/* Filtrlangan cardlar */}
             <div className="mult-card-cards">
-              {filteredMults.length > 0 ? (
+              {loading ? (
+                <p>Yuklanmoqda...</p>
+              ) : filteredMults.length > 0 ? (
                 filteredMults.map((item) => (
                   <div className="mult-cards-item" key={item.id}>
                     <Link to={`/mult/${item.id}`}>
