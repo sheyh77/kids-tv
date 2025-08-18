@@ -7,8 +7,16 @@ function MultPlayer() {
   const [mult, setMult] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(mult);
-  
+  useEffect(() => {
+    if(mult) {
+      const history = JSON.parse(localStorage.getItem("history")) || [];
+
+      if(!history.find(item => item.id === mult.id)) {
+        history.push(mult);
+        localStorage.setItem("history", JSON.stringify(history))
+      }
+    }
+  }, [mult])
 
   useEffect(() => {
     fetch("https://ceed8a646c7fba8b.mokky.dev/multcard")

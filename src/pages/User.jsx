@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../layout/Header';
 import ProfileSvg from "../assets/svg/ProfileSvg";
 import HistorySvg from "../assets/svg/HistorySvg";
@@ -8,6 +8,17 @@ import LogOutSvg from "../assets/svg/LogOutSvg";
 function User() {
 
   const [active, setActive] = useState("profile")
+  const [history, setHistory] = useState([])
+
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("history")) || [];
+    setHistory(saved)
+  }, [])
+
+  const clearHistory = () => {
+    localStorage.removeItem("history");
+    setHistory([]);
+  }
 
   return (
     <section className="user">
@@ -30,6 +41,7 @@ function User() {
           </div>
           <div className="user-info">
             <div className="user-info2">
+
               {
                 active === "profile" && (
                   <div className="user-info-box">
@@ -52,21 +64,69 @@ function User() {
                   </div>
                 )
               }
+
               {
                 active === "history" && (
-                  <h1>history</h1>
+                  history.length === 0 ? (
+                    <p>Hali hech qanday multfilm ko‘rilmagan</p>
+                  ) : (
+                    <div>
+                      <h1 className="user-history-title">Ko‘rilgan multfilmlar</h1>
+                      <ol className='user-history-desc'>
+                        {history.map((item, i) => (
+                          <li key={i}>{item.title}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  )
                 )
               }
+
               {
                 active === "settings" && (
-                  <h1>settings</h1>
+                  <div className="user-settings">
+                    <h1 className="user-settings-title">⚙️ Sozlamalar</h1>
+
+                    <div className="user-settings-item">
+                      <label>Tilni tanlang:</label>
+                      <select>
+                        <option value="uz">O‘zbekcha</option>
+                        <option value="en">Inglizcha</option>
+                        <option value="ru">Ruscha</option>
+                      </select>
+                    </div>
+
+                    <div className="user-settings-item">
+                      <label>Mavzu:</label>
+                      <select>
+                        <option value="light">Oq (Light)</option>
+                        <option value="dark">Qorong‘i (Dark)</option>
+                        <option value="kids">Bolalar rejimi</option>
+                      </select>
+                    </div>
+
+                    <div className="user-settings-actions">
+                      <button className="user-clear-btn" onClick={clearHistory}>🧹 Ko‘rgan tarixni tozalash</button>
+                      <button className="user-password-btn">🔑 Parolni yangilash</button>
+                    </div>
+                  </div>
                 )
               }
+
               {
                 active === "logout" && (
-                  <h1>logout</h1>
+                  <div className="user-logout">
+                    <div className="user-logout-modal">
+                      <h1 className="user-logout-modal-title">Rostan ham chiqmoqchimisiz?</h1>
+                      <div className="user-logout-modal-btn">
+                        <button className='user-logout-modal-n'>Yo'q</button>
+                        <button className='user-logout-modal-y'>Ha</button>
+                      </div>
+                    </div>
+                  </div>
                 )
               }
+
             </div>
             <div className="user-info-res">
               {
@@ -86,6 +146,65 @@ function User() {
                       <button className='user-info-saves-btn'>Saqlash</button>
                     </div>
                   </>
+                )
+              }
+              {
+                active === "history" && (
+                  history.length === 0 ? (
+                    <p>Hali hech qanday multfilm ko‘rilmagan</p>
+                  ) : (
+                    <div>
+                      <h1 className="user-history-title">Ko‘rilgan multfilmlar</h1>
+                      <ol className='user-history-desc'>
+                        {history.map((item, i) => (
+                          <li key={i}>{item.title}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  )
+                )
+              }
+              {
+                active === "settings" && (
+                  <div className="user-settings">
+                    <h1 className="user-settings-title">⚙️ Sozlamalar</h1>
+
+                    <div className="user-settings-item">
+                      <label>Tilni tanlang:</label>
+                      <select>
+                        <option value="uz">O‘zbekcha</option>
+                        <option value="en">Inglizcha</option>
+                        <option value="ru">Ruscha</option>
+                      </select>
+                    </div>
+
+                    <div className="user-settings-item">
+                      <label>Mavzu:</label>
+                      <select>
+                        <option value="light">Oq (Light)</option>
+                        <option value="dark">Qorong‘i (Dark)</option>
+                        <option value="kids">Bolalar rejimi</option>
+                      </select>
+                    </div>
+
+                    <div className="user-settings-actions">
+                      <button className="user-clear-btn" onClick={clearHistory}>🧹 Ko‘rgan tarixni tozalash</button>
+                      <button className="user-password-btn">🔑 Parolni yangilash</button>
+                    </div>
+                  </div>
+                )
+              }
+              {
+                active === "logout" && (
+                  <div className="user-logout">
+                    <div className="user-logout-modal">
+                      <h1 className="user-logout-modal-title">Rostan ham chiqmoqchimisiz?</h1>
+                      <div className="user-logout-modal-btn">
+                        <button className='user-logout-modal-n'>Yo'q</button>
+                        <button className='user-logout-modal-y'>Ha</button>
+                      </div>
+                    </div>
+                  </div>
                 )
               }
             </div>
