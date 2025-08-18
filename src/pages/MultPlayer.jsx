@@ -11,7 +11,7 @@ function MultPlayer() {
   
 
   useEffect(() => {
-    fetch("https://ceed8a646c7fba8b.mokky.dev/multcard") // o'zingizning linkingiz
+    fetch("https://ceed8a646c7fba8b.mokky.dev/multcard")
       .then(res => res.json())
       .then(data => {
         const found = data.find(item => item.id === Number(id));

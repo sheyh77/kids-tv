@@ -76,4 +76,11 @@
         font-weight: 600;
     }
 
+    &-menu-nav-bg.active {
+        width: 100px;
+        height: 100px;
+        background-color: #999;
+        border-radius: 50%;
+    }
+
 }

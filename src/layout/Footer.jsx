@@ -47,7 +47,7 @@ function Footer() {
           <div className="footer-desc">
             <p className="footer-desc-title">Multi Kids</p>
             <p className="footer-desc-subtitle">
-              Bu dastur yosh bolalar uchun turli yomon videolardan va reklamardan saqlangan holda faqat multfilm va qiziqarli o'yinlar uchun yaratilgan.
+              Bu dastur yosh bolalar uchun turli yomon videolardan va reklamalardan saqlangan holda faqat multfilm va qiziqarli o'yinlar uchun yaratilgan.
             </p>
             <p className="footer-desc-in">Bizning ijtimoiy tarmoqlar:</p>
             <div className="footer-desc-btns">

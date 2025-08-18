@@ -16,7 +16,7 @@ function Mult() {
 
   // 🔹 API dan fetch qilish
   useEffect(() => {
-    fetch("https://ceed8a646c7fba8b.mokky.dev/multcard") // <-- o'z linkingizni yozing
+    fetch("https://ceed8a646c7fba8b.mokky.dev/multcard")
       .then(res => res.json())
       .then(data => {
         setMults(data);
@@ -28,7 +28,6 @@ function Mult() {
       });
   }, []);
 
-  // 🔹 Filtrlash
   const filteredMults = mults.filter(item => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesLang = selectedLang === "all" || item.lang === selectedLang;
