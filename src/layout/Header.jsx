@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import HomeSvg from "../assets/svg/HomeSvg";
 import TvSvg from "../assets/svg/TvSvg";
 import BrainSvg from "../assets/svg/BrainSvg";
 import UserSvg from "../assets/svg/UserSvg";
+import useTranslate from "../hook/useTranslate";
 
 function Header() {
+
+    const { t } = useTranslate()
+
     return (
         <header className="header">
             <div className="cantainer">
@@ -14,9 +18,9 @@ function Header() {
                         <Link className='header-logo-title'>Multi Kids</Link>
                     </div>
                     <nav className="header-nav">
-                        <Link to={"/"}>Asosiy</Link>
-                        <Link to={"/multfilm"}>Multfilm</Link>
-                        <Link to={"/bilimdon"}>Bilimdon</Link>
+                        <Link to={"/"}>{t("asosiy")}</Link>
+                        <Link to={"/multfilm"}>{t("multfilm")}</Link>
+                        <Link to={"/bilimdon"}>{t("bilimdon")}</Link>
                     </nav>
 
                     {/* header media menu */}
@@ -26,19 +30,19 @@ function Header() {
                             <Link to={"/"}>
                                 <button className='header-menu-block'>
                                     <HomeSvg />
-                                    <p className='header-menu-desc'>Asosiy</p>
+                                    <p className='header-menu-desc'>{t("asosiy")}</p>
                                 </button>
                             </Link>
                             <Link to={"/multfilm"}>
                                 <button className='header-menu-block'>
                                     <TvSvg />
-                                    <p className='header-menu-desc'>Multfilm</p>
+                                    <p className='header-menu-desc'>{t("multfilm")}</p>
                                 </button>
                             </Link>
                             <Link to={"/bilimdon"}>
                                 <button className='header-menu-block'>
                                     <BrainSvg />
-                                    <p className='header-menu-desc'>Bilimdon</p>
+                                    <p className='header-menu-desc'>{t("bilimdon")}</p>
                                 </button>
                             </Link>
                             <Link to={"/user"}>

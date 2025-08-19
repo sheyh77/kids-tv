@@ -11,20 +11,23 @@ import BrainMult from "./pages/BrainRoute/BrainMult.jsx";
 import Letter from "./pages/BrainRoute/Letter.jsx";
 import Animal from "./pages/BrainRoute/Animal.jsx";
 import Nums from "./pages/BrainRoute/Nums.jsx";
+import LanguageProvider from './context/LanguageContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<App />} />
-      <Route path='/multfilm' element={<Mult />}/>
-      <Route path='/bilimdon' element={<Brain />}/>
-      <Route path='/user' element={<User />}/>
-      <Route path="/mult/:id" element={<MultPlayer />} />
-      <Route path="/bilimdon/brainmult" element={<BrainMult />} />
-      <Route path="/bilimdon/harflar" element={<Letter />} />
-      <Route path="/bilimdon/hayvonlar" element={<Animal />} />
-      <Route path="/bilimdon/raqamlar" element={<Nums />} />
-    </Routes>
+    <LanguageProvider>
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path='/multfilm' element={<Mult />} />
+        <Route path='/bilimdon' element={<Brain />} />
+        <Route path='/user' element={<User />} />
+        <Route path="/mult/:id" element={<MultPlayer />} />
+        <Route path="/bilimdon/brainmult" element={<BrainMult />} />
+        <Route path="/bilimdon/harflar" element={<Letter />} />
+        <Route path="/bilimdon/hayvonlar" element={<Animal />} />
+        <Route path="/bilimdon/raqamlar" element={<Nums />} />
+      </Routes>
+    </LanguageProvider>
   </BrowserRouter>
-  
+
 )

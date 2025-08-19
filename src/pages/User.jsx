@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../layout/Header';
 import ProfileSvg from "../assets/svg/ProfileSvg";
 import HistorySvg from "../assets/svg/HistorySvg";
 import SettingsSvg from "../assets/svg/SettingsSvg";
 import LogOutSvg from "../assets/svg/LogOutSvg";
+import { LanguageContext } from '../context/LanguageContext';
 
 function User() {
 
@@ -18,6 +19,12 @@ function User() {
   const clearHistory = () => {
     localStorage.removeItem("history");
     setHistory([]);
+  }
+
+  const { setLanguage } = useContext(LanguageContext)
+  const handleChange = (e) => {
+    setLanguage(e.target.value);
+    localStorage.setItem("lang", e.target.value)
   }
 
   return (
@@ -89,7 +96,7 @@ function User() {
 
                     <div className="user-settings-item">
                       <label>Tilni tanlang:</label>
-                      <select>
+                      <select onChange={(e) => handleChange(e)} defaultValue={localStorage.getItem("lang")}>
                         <option value="uz">O‘zbekcha</option>
                         <option value="en">Inglizcha</option>
                         <option value="ru">Ruscha</option>
@@ -126,8 +133,8 @@ function User() {
                   </div>
                 )
               }
-
             </div>
+            {/* responsive uchun */}
             <div className="user-info-res">
               {
                 active === "profile" && (
