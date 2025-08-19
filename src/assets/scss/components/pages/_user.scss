@@ -355,3 +355,17 @@
         border-radius: 6px;
     }
 }
+
+body.light {
+  background: #fff;
+  color: #000;
+}
+
+body.dark {
+  background: #121212;
+}
+
+body.kids {
+  background: #ffefd5; /* pastel rang */
+  color: #333;
+}

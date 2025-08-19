@@ -4,7 +4,6 @@ export const LanguageContext = createContext(null);
 
 function LanguageProvider({ children }) {
     const LocalLang = localStorage.getItem("lang") || "uz"
-    
     const [language, setLanguage] = useState(LocalLang)
 
     return (

@@ -5,6 +5,7 @@ import HistorySvg from "../assets/svg/HistorySvg";
 import SettingsSvg from "../assets/svg/SettingsSvg";
 import LogOutSvg from "../assets/svg/LogOutSvg";
 import { LanguageContext } from '../context/LanguageContext';
+import { ColorContext } from '../context/ColorContext';
 
 function User() {
 
@@ -27,6 +28,8 @@ function User() {
     localStorage.setItem("lang", e.target.value)
   }
 
+  const {color, toggleTheme} = useContext(ColorContext)
+
   return (
     <section className="user">
       <div className="cantainer">
@@ -48,7 +51,6 @@ function User() {
           </div>
           <div className="user-info">
             <div className="user-info2">
-
               {
                 active === "profile" && (
                   <div className="user-info-box">
@@ -56,9 +58,7 @@ function User() {
                     <div className="user-info-obj">
                       <div className="user-info-inp">
                         <input type="text" placeholder='Ismingiz' />
-                        <input type="email" placeholder='Email' />
                         <input type="password" placeholder='Parol' />
-                        <input type="text" placeholder='Manzil' />
                         <input type="phone" placeholder='Telefon raqam' />
                       </div>
                       <div className="user-info-photo">
@@ -105,13 +105,12 @@ function User() {
 
                     <div className="user-settings-item">
                       <label>Mavzu:</label>
-                      <select>
+                      <select onChange={(e) => toggleTheme(e.target.value)} value={color}>
                         <option value="light">Oq (Light)</option>
                         <option value="dark">Qorong‘i (Dark)</option>
                         <option value="kids">Bolalar rejimi</option>
                       </select>
                     </div>
-
                     <div className="user-settings-actions">
                       <button className="user-clear-btn" onClick={clearHistory}>🧹 Ko‘rgan tarixni tozalash</button>
                       <button className="user-password-btn">🔑 Parolni yangilash</button>
@@ -144,9 +143,7 @@ function User() {
                     </div>
                     <div className="user-info-object">
                       <input type="text" placeholder='Ismingiz' />
-                      <input type="email" placeholder='Email' />
                       <input type="password" placeholder='Parol' />
-                      <input type="text" placeholder='Manzil' />
                       <input type="phone" placeholder='Telefon raqam' />
                     </div>
                     <div className="user-info-saves">
