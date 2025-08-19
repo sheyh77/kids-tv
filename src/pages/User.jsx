@@ -178,7 +178,7 @@ function User() {
 
                     <div className="user-settings-item">
                       <label>Tilni tanlang:</label>
-                      <select>
+                      <select onChange={(e) => handleChange(e)} defaultValue={localStorage.getItem("lang")}>
                         <option value="uz">O‘zbekcha</option>
                         <option value="en">Inglizcha</option>
                         <option value="ru">Ruscha</option>
