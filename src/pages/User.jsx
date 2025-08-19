@@ -184,7 +184,7 @@ function User() {
 
                     <div className="user-settings-item">
                       <label>Mavzu:</label>
-                      <select>
+                      <select onChange={(e) => toggleTheme(e.target.value)} value={color}>
                         <option value="light">Oq (Light)</option>
                         <option value="dark">Qorong‘i (Dark)</option>
                         <option value="kids">Bolalar rejimi</option>
