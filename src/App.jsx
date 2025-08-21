@@ -4,7 +4,7 @@ import Main from './layout/Main';
 import Footer from './layout/Footer';
 
 function App() {
-  
+
   return (
     <>
       <Header />

@@ -9,6 +9,8 @@ import MultPlayer from './pages/MultPlayer.jsx';
 import LanguageProvider from './context/LanguageContext.jsx';
 import ColorProvider from './context/ColorContext.jsx';
 import Settings from './pages/Settings.jsx';
+import Register from './login/Register.jsx';
+import Login from './login/Login.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -20,6 +22,8 @@ createRoot(document.getElementById('root')).render(
           <Route path='/user' element={<User />} />
           <Route path='/settings' element={<Settings />} />
           <Route path="/mult/:id" element={<MultPlayer />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </LanguageProvider>
     </ColorProvider>
