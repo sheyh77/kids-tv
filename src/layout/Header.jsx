@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import HomeSvg from "../assets/svg/HomeSvg";
 import TvSvg from "../assets/svg/TvSvg";
-import BrainSvg from "../assets/svg/BrainSvg";
 import UserSvg from "../assets/svg/UserSvg";
 import useTranslate from "../hook/useTranslate";
+import SettingsSvg from "../assets/svg/SettingsSvg"
 
 function Header() {
 
@@ -20,7 +20,8 @@ function Header() {
                     <nav className="header-nav">
                         <Link to={"/"}>{t("asosiy")}</Link>
                         <Link to={"/multfilm"}>{t("multfilm")}</Link>
-                        <Link to={"/bilimdon"}>{t("bilimdon")}</Link>
+                        <Link to={"/user"}>Profile</Link>
+                        <Link to={"/settings"}>Sozlamalar</Link>
                     </nav>
 
                     {/* header media menu */}
@@ -39,16 +40,16 @@ function Header() {
                                     <p className='header-menu-desc'>{t("multfilm")}</p>
                                 </button>
                             </Link>
-                            <Link to={"/bilimdon"}>
-                                <button className='header-menu-block'>
-                                    <BrainSvg />
-                                    <p className='header-menu-desc'>{t("bilimdon")}</p>
-                                </button>
-                            </Link>
                             <Link to={"/user"}>
                                 <button className='header-menu-block'>
                                     <UserSvg />
                                     <p className='header-menu-desc'>Profil</p>
+                                </button>
+                            </Link>
+                            <Link to={"/settings"}>
+                                <button className='header-menu-block'>
+                                    <SettingsSvg />
+                                    <p className='header-menu-desc'>Settings</p>
                                 </button>
                             </Link>
                         </div>

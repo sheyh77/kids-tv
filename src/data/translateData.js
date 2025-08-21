@@ -9,11 +9,6 @@ export const trasnlateData = {
         uz: "Multfilm",
         ru: "Мультфильм"
     },
-    bilimdon: {
-        en: "Knowledgeable",
-        uz: "Bilimdon",
-        ru: "Знающий"
-    },
     top_mult: {
         en: "My favorite cartoon is here.",
         uz: "Sevimli multiklaring shu yerda",

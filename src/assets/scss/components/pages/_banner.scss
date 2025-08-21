@@ -9,18 +9,18 @@
     }
     
     &-wrap {
+        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
     }
 
     &-desc {
-        margin-top: 200px;
+        margin-top: 400px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: start;
         gap: 20px;
-        color: #FF9800;
+        color: #d134d1;
         font-size: 36px;
 
         @media screen and (max-width: 866px){
@@ -29,7 +29,7 @@
 
         @media screen and (max-width: 592px){
             font-size: 20px;
-            color: #7e26a6;
+            color: #d134d1;
             text-align: center;
         }
     }
@@ -37,7 +37,7 @@
     &-btn {
         padding: 12px 30px;
         border-radius: 30px;
-        background-color: #FF9800;
+        background-color: #d134d1;
         color: white;
         font-weight: 600;
         font-size: 15px;

@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import StarSvg from '../assets/svg/StarSvg';
 
 function Mult() {
   const [selectedLang, setSelectedLang] = useState("all"); // all = barcha tillar
@@ -39,15 +40,15 @@ function Mult() {
       <div className="cantainer">
         <div className="mult-wrap">
           <Header />
-          
-          <input 
+
+          <input
             type="search"
             placeholder='Qidiruv'
             className='mult-search'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          
+
           {/* Swiper */}
           <div className="mult-top">
             <Swiper
@@ -70,19 +71,19 @@ function Mult() {
           <div className="mult-card">
             {/* Til tanlash */}
             <div className="mult-card-option">
-              <button 
+              <button
                 className={selectedLang === "all" ? "active" : ""}
                 onClick={() => setSelectedLang("all")}
               >Barchasi</button>
-              <button 
+              <button
                 className={selectedLang === "uz" ? "active" : ""}
                 onClick={() => setSelectedLang("uz")}
               >Uzbek</button>
-              <button 
+              <button
                 className={selectedLang === "en" ? "active" : ""}
                 onClick={() => setSelectedLang("en")}
               >English</button>
-              <button 
+              <button
                 className={selectedLang === "ru" ? "active" : ""}
                 onClick={() => setSelectedLang("ru")}
               >Russian</button>
@@ -95,9 +96,18 @@ function Mult() {
               ) : filteredMults.length > 0 ? (
                 filteredMults.map((item) => (
                   <div className="mult-cards-item" key={item.id}>
-                    <Link to={`/mult/${item.id}`}>
-                      <img src={item.img} alt="mult" />
+                    <img src={item.img} alt="mult" />
+                    <div className="mult-cards-item-text">
+                      <p className="mult-cards-item-name">Nomi:</p>
                       <p className="mult-cards-title">{item.title}</p>
+                    </div>
+                    <div className="mult-cards-item-reyting">
+                      <p>Reyting:</p>
+                      <StarSvg />
+                      <p className="mult-cards-item-reyting">{item.reyting}</p>
+                    </div>
+                    <Link to={`/mult/${item.id}`}>
+                      <button className='mult-cards-item-btn'>Ko'rish</button>
                     </Link>
                   </div>
                 ))
