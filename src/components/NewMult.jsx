@@ -7,13 +7,17 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { newMultMap } from './newMultMap';
 import { Link } from 'react-router-dom';
+import useTranslate from '../hook/useTranslate';
 
 function NewMult() {
+
+    const { t } = useTranslate()
+
     return (
         <section className="newMult">
             <div className="cantainer">
                 <div className="newMult-wrap">
-                    <h1 className='newMult-title'>Yangi multfilmlar</h1>
+                    <h1 className='newMult-title'>{t("new_mult")}</h1>
                     <Swiper navigation={true} modules={[Navigation]} className="newMult-swiper mySwiper">
                         {
                             newMultMap.map((item) => (

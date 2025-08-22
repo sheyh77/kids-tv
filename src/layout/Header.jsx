@@ -20,8 +20,8 @@ function Header() {
                     <nav className="header-nav">
                         <Link to={"/"}>{t("asosiy")}</Link>
                         <Link to={"/multfilm"}>{t("multfilm")}</Link>
-                        <Link to={"/user"}>Profile</Link>
-                        <Link to={"/settings"}>Sozlamalar</Link>
+                        <Link to={"/user"}>{t("profile")}</Link>
+                        <Link to={"/settings"}>{t("settings")}</Link>
                     </nav>
 
                     {/* header media menu */}

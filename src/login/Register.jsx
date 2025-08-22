@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Form, Input, message } from 'antd';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Register() {
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
   const onFinish = (values) => {
     axios.post("https://ceed8a646c7fba8b.mokky.dev/foydalanuvchi", values)
       .then(res => {
         if (res.status === 201) {
+          const user = res.data;
+
           // foydalanuvchini localStorage ga saqlaymiz
-          localStorage.setItem("user", JSON.stringify(res.data));
+          localStorage.setItem("user", JSON.stringify(user));
 
-          // xabar
+          // Contextni yangilaymiz
+          setUser(user);
+
+          // Xabar va redirect
           messageApi.success("Ro‘yxatdan o‘tish muvaffaqiyatli!");
-
-          // asosiy menyuga o‘tkazamiz
-          navigate("/");
+          navigate("/"); // asosiy menyu
         }
       })
       .catch(err => {
@@ -26,31 +31,31 @@ function Register() {
           type: "error",
           content: "Ro‘yxatdan o‘tishda xatolik!",
         });
-        console.log("error:", err);
+        console.error("Register error:", err);
       });
   };
 
   return (
     <>
       {contextHolder}
-      <section className="login">
-        <div className="login-box">
-          <h1 className="login-box-title">Register</h1>
+      <section className="register">
+        <div className="register-box">
+          <h1 className="register-box-title">Register</h1>
           <Form
             name='basic'
             initialValues={{ remember: true }}
             onFinish={onFinish}
             autoComplete='off'
-            className='login-form'
+            className='register-form'
           >
-            <Form.Item 
+            <Form.Item
               name="username"
               rules={[{ required: true, message: 'Username kiriting!' }]}
             >
               <Input type="text" placeholder='Username' />
             </Form.Item>
 
-            <Form.Item 
+            <Form.Item
               name="password"
               rules={[{ required: true, message: 'Parol kiriting!' }]}
             >
@@ -58,10 +63,11 @@ function Register() {
             </Form.Item>
 
             <Form.Item>
-              <Button type='primary' htmlType='submit'>
+              <Button type='primary' htmlType='submit' className='register-btn'>
                 Register
               </Button>
             </Form.Item>
+            <Link to="/login" className='register-login-btn'>Akkauntingiz bo'lsa bosing!</Link>
           </Form>
         </div>
       </section>

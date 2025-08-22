@@ -39,4 +39,39 @@ export const trasnlateData = {
         uz: "Rus tilida multfilmlar",
         ru: "Мультики на русском языке"
     },
+    barchasi: {
+        en: "All",
+        uz: "Barchasi",
+        ru: "Все"
+    },
+    uzbek: {
+        en: "Uzbek",
+        uz: "O'zbek",
+        ru: "Узбекский"
+    },
+    english: {
+        en: "English",
+        uz: "Ingliz",
+        ru: "Английский"
+    },
+    russion: {
+        en: "Russia",
+        uz: "Rossiya",
+        ru: "Русский"
+    },
+    profile: {
+        en: "Profile",
+        uz: "Profil",
+        ru: "Профиль"
+    },
+    log_out: {
+        en: "Log out",
+        uz: "Chiqish",
+        ru: "Выход"
+    },
+    settings: {
+        en: "Settings",
+        uz: "Sozlamalar",
+        ru: "Настройки"
+    }
 }

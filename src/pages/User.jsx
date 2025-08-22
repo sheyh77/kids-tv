@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../layout/Header';
 import KubokSvg from '../assets/svg/KubokSvg';
 import ClockSvg from '../assets/svg/ClockSvg';
 import FavouriteSvg from '../assets/svg/FavouriteSvg';
 import FireSvg from '../assets/svg/FireSvg';
+import { Button, Popconfirm } from 'antd';
+import { AuthContext } from '../context/AuthContext';
+import { data } from 'react-router-dom';
+import useTranslate from '../hook/useTranslate';
 
 function User() {
   const [userData, setUserData] = useState(null);
   const localUser = JSON.parse(localStorage.getItem("user")); // register yoki login qilganda saqlangan user obyekt
+  const { Logout } = useContext(AuthContext)
+  const {t} = useTranslate()
 
   useEffect(() => {
     if (localUser?.id) {
@@ -20,12 +26,27 @@ function User() {
 
   if (!userData) return <p>Loading...</p>;
 
+  const confirm = () => {
+    Logout()
+  };
+
   return (
     <section className="user">
       <div className="cantainer">
         <div className="user-wrap">
           <Header />
-          <h1 className="user-title">Mening profilim</h1>
+          <div className="user-top">
+            <h1 className="user-title">{t("profile")}</h1>
+            <Popconfirm
+              title="Akkauntdan chiqish"
+              description="Rostdan ham chiqmoqchimisiz?"
+              onConfirm={confirm}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button danger>{t("log_out")}</Button>
+            </Popconfirm>
+          </div>
           <div className="user-content">
             {/* Profil haqida */}
             <div className="user-content-about">

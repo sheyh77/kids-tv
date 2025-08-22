@@ -11,10 +11,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+import useTranslate from '../hook/useTranslate';
 
 
 
 function CardMult() {
+
+    const { t } = useTranslate()
     return (
         <section className="cardMult">
             <div className="cantainer">

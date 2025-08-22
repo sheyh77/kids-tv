@@ -8,12 +8,14 @@ import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import StarSvg from '../assets/svg/StarSvg';
+import useTranslate from '../hook/useTranslate';
 
 function Mult() {
   const [selectedLang, setSelectedLang] = useState("all"); // all = barcha tillar
   const [searchTerm, setSearchTerm] = useState("");
   const [mults, setMults] = useState([]); // API dan kelyotgan malumotlar
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslate()
 
   // 🔹 API dan fetch qilish
   useEffect(() => {
@@ -74,19 +76,19 @@ function Mult() {
               <button
                 className={selectedLang === "all" ? "active" : ""}
                 onClick={() => setSelectedLang("all")}
-              >Barchasi</button>
+              >{t("barchasi")}</button>
               <button
                 className={selectedLang === "uz" ? "active" : ""}
                 onClick={() => setSelectedLang("uz")}
-              >Uzbek</button>
+              >{t("uzbek")}</button>
               <button
                 className={selectedLang === "en" ? "active" : ""}
                 onClick={() => setSelectedLang("en")}
-              >English</button>
+              >{t("english")}</button>
               <button
                 className={selectedLang === "ru" ? "active" : ""}
                 onClick={() => setSelectedLang("ru")}
-              >Russian</button>
+              >{t("russion")}</button>
             </div>
 
             {/* Filtrlangan cardlar */}
