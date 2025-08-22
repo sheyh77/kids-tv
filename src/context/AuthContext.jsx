@@ -6,7 +6,7 @@ export const AuthContext = createContext(null)
 function AuthProvider({children}) {
     const navigate = useNavigate()
     let locale = localStorage.getItem("user") || ""
-    const [auth, setAuth] = useState(!locale)
+    const [auth, setAuth] = useState(!!locale)
 
     function setUser() {
         navigate("/")
