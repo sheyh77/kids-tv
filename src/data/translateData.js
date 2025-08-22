@@ -73,5 +73,50 @@ export const trasnlateData = {
         en: "Settings",
         uz: "Sozlamalar",
         ru: "Настройки"
+    },
+    mavzu: {
+        en: "Topic",
+        uz: "Mavzu",
+        ru: "Тема"
+    },
+    mavzu_click: {
+        en: "Choose the topic you need.",
+        uz: "O'zingizga kerakli mavzuni tanlang",
+        ru: "Выберите нужную вам тему."
+    },
+    til_update: {
+        en: "Change language",
+        uz: "Tilni o'zgartish",
+        ru: "Изменить язык"
+    },
+    til: {
+        en: "Language",
+        uz: "Til",
+        ru: "Язык"
+    },
+    til_click: {
+        en: "Choose the language you need.",
+        uz: "Kerakli tilni tanlang",
+        ru: "Выберите нужный вам язык."
+    },
+    bildirishnoma: {
+        en: "Notification",
+        uz: "Bildirishnoma",
+        ru: "Уведомление"
+    },
+    ovoz: {
+        en: "Sound",
+        uz: "Ovoz",
+        ru: "Звук"
+    },
+    bildirishnoma_sozlash: {
+        en: "Notification settings",
+        uz: "Bildirishnoma sozlash",
+        ru: "Настройки уведомлений"
+    },
+    about: {
+        en: "Please leave your thoughts on what you would like to see here in the comments section below the main menu😊",
+        uz: "Bu yerda nima bo'lishini hohlaysiz fikringizni asosiy menyuning pasida yozib ketishingizni so'raymiz😊",
+        ru: "Пожалуйста, оставьте свои мысли о том, что бы вы хотели видеть здесь, в разделе комментариев под главным меню😊"
     }
 }

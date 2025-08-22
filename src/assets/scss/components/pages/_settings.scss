@@ -73,6 +73,22 @@
     &-language-option {
         border-radius: 12px;
     }
+
+    &-block-item-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-block-item-title {
+        width: 500px;
+        text-align: center;
+
+        @media screen and (max-width: 600px){
+            width: 300px;
+            font-size: 16px;
+        }
+    }
 }
 
 .settings-block-item.dark {

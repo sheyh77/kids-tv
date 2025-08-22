@@ -9,30 +9,44 @@ function Register() {
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
 
-  const onFinish = (values) => {
-    axios.post("https://ceed8a646c7fba8b.mokky.dev/foydalanuvchi", values)
-      .then(res => {
-        if (res.status === 201) {
-          const user = res.data;
+  const onFinish = async (values) => {
+    try {
+      // 1) Avval username bor-yo‘qligini tekshiramiz
+      const checkUser = await axios.get(
+        `https://ceed8a646c7fba8b.mokky.dev/foydalanuvchi?username=${values.username}`
+      );
 
-          // foydalanuvchini localStorage ga saqlaymiz
-          localStorage.setItem("user", JSON.stringify(user));
+      if (checkUser.data.length > 0) {
+        messageApi.error("Bu username allaqachon mavjud, boshqasini tanlang!");
+        return;
+      }
 
-          // Contextni yangilaymiz
-          setUser(user);
+      // 2) Agar username bo‘lmasa → yangi user yaratamiz
+      const res = await axios.post(
+        "https://ceed8a646c7fba8b.mokky.dev/foydalanuvchi",
+        values
+      );
 
-          // Xabar va redirect
-          messageApi.success("Ro‘yxatdan o‘tish muvaffaqiyatli!");
-          navigate("/"); // asosiy menyu
-        }
-      })
-      .catch(err => {
-        messageApi.open({
-          type: "error",
-          content: "Ro‘yxatdan o‘tishda xatolik!",
-        });
-        console.error("Register error:", err);
+      if (res.status === 201) {
+        const user = res.data;
+
+        // foydalanuvchini localStorage ga saqlaymiz
+        localStorage.setItem("user", JSON.stringify(user));
+
+        // Contextni yangilaymiz
+        setUser(user);
+
+        // Xabar va redirect
+        messageApi.success("Ro‘yxatdan o‘tish muvaffaqiyatli!");
+        navigate("/");
+      }
+    } catch (err) {
+      messageApi.open({
+        type: "error",
+        content: "Ro‘yxatdan o‘tishda xatolik!",
       });
+      console.error("Register error:", err);
+    }
   };
 
   return (

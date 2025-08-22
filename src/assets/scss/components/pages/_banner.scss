@@ -31,6 +31,7 @@
             font-size: 20px;
             color: #d134d1;
             text-align: center;
+            align-items: center;
         }
     }
 
@@ -41,9 +42,5 @@
         color: white;
         font-weight: 600;
         font-size: 15px;
-
-        @media screen and (max-width: 592px){
-            background-color: #7e26a6;
-        }
     }
 }
